@@ -1,9 +1,10 @@
 #pragma once
 
-#include <utility>
 #include <pal_mstypes.h>
 #include <palrt.h>
 #include <utf8.h>
+
+#include <utility>
 #undef __valid
 
 namespace com {
@@ -32,12 +33,10 @@ struct bstr {
     {
         return &ptr;
     }
-    
-    operator std::string() const
-    {
-        return utf8::utf16to8(ptr);
-    }
-private:
+
+    operator std::string() const { return utf8::utf16to8(static_cast<std::u16string_view>(ptr)); }
+
+  private:
     BSTR ptr;
 };
 

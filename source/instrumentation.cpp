@@ -1,9 +1,13 @@
-#include <spdlog/spdlog.h>
+#include "instrumentation.h"
+
 #include <spdlog/fmt/bundled/ranges.h>
+#include <spdlog/spdlog.h>
 #include <utf8.h>
+#include <utf8/cpp11.h>
+
+#include <string_view>
 
 #include "method.h"
-#include "instrumentation.h"
 
 using namespace appmap;
 
@@ -261,7 +265,8 @@ mdMethodDef appmap::instrumentation::define_method(
     std::vector<appmap::cil::instruction> code
 ) {
     const auto tok = metadata.get(&IMetaDataEmit::DefineMethod, type, name, 0, signature.data(), signature.size(), method.code_rva(), miManaged);
-    spdlog::trace("defining {}, instruction count: {}", utf8::utf16to8(name), code.size());
+    spdlog::trace("defining {}, instruction count: {}",
+                  utf8::utf16to8(static_cast<std::u16string_view>(name)), code.size());
     add_hook(tok, module.module_id(),
         [locals = appmap::signature::locals(locals), code = std::move(code)](const auto &method) {
             com::hresult::check(method.local_variables()->ReplaceSignature(locals.data(), locals.size()));

@@ -17,7 +17,17 @@ endif()
 
 include(cmake/CPM.cmake)
 
-CPMAddPackage("gh:nemtrif/utfcpp@3.1.2")
+CPMAddPackage(
+  NAME utfcpp
+  GITHUB_REPOSITORY nemtrif/utfcpp
+  VERSION 4.0.5
+  DOWNLOAD_ONLY YES
+)
+
+if (utfcpp_ADDED)
+  add_library(utfcpp INTERFACE IMPORTED)
+  target_include_directories(utfcpp INTERFACE ${utfcpp_SOURCE_DIR}/source)
+endif()
 
 CPMAddPackage(
   NAME nlohmann_json

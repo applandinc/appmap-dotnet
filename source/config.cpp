@@ -348,11 +348,12 @@ struct ComMock : public Mock<C>
         }
 
         void operator=(const char *r) {
-            auto method = [str = utf8::utf8to16(r)](auto &&...args) {
-                *std::get<sizeof...(arglist) - 1>(std::make_tuple(args...)) = SysAllocString(str.data());
-                return S_OK;
-            };
-            MethodMockingContext<HRESULT, arglist...>::setMethodBodyByAssignment(method);
+          auto method = [str = utf8::utf8to16(static_cast<std::string_view>(r))](auto &&...args) {
+            *std::get<sizeof...(arglist) - 1>(std::make_tuple(args...))
+                = SysAllocString(str.data());
+            return S_OK;
+          };
+          MethodMockingContext<HRESULT, arglist...>::setMethodBodyByAssignment(method);
         }
 
         ComMockingContext<arglist...> &setMethodDetails(std::string mockName, std::string methodName) {

@@ -10,5 +10,5 @@ set_target_properties(com PROPERTIES CXX_STANDARD 20)
 target_compile_options(com PRIVATE -fPIC)
 
 target_link_libraries(com PUBLIC pal)
-target_link_libraries(com PUBLIC utf8::cpp)
+target_link_libraries(com PUBLIC utfcpp)
 target_include_directories(com PUBLIC include)
