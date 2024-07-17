@@ -50,8 +50,8 @@ CPMAddPackage("gh:onqtam/doctest@2.4.5#2.4.5")
 CPMAddPackage(
   NAME yaml-cpp
   GITHUB_REPOSITORY jbeder/yaml-cpp
-  GIT_TAG yaml-cpp-0.6.3
-  VERSION 0.6.3
+  GIT_TAG 0.8.0
+  VERSION 0.8.0
   OPTIONS "YAML_CPP_BUILD_TESTS OFF;YAML_CPP_BUILD_TOOLS OFF;YAML_CPP_BUILD_CONTRIB OFF"
 )
 target_compile_options(yaml-cpp PRIVATE -fPIC)
