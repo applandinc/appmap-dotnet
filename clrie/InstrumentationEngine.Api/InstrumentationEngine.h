@@ -39,6 +39,9 @@
 #ifndef __InstrumentationEngine_h__
 #define __InstrumentationEngine_h__
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Woverloaded-virtual"
+
 #if defined(_MSC_VER) && (_MSC_VER >= 1020)
 #pragma once
 #endif
@@ -9353,6 +9356,6 @@ EXTERN_C const IID IID_IInstrumentationMethodAttach;
 }
 #endif
 
+#pragma GCC diagnostic pop
+
 #endif
-
-
