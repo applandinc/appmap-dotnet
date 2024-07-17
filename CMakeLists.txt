@@ -96,5 +96,5 @@ target_link_libraries(appmap-instrumentation
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     target_link_libraries(appmap-instrumentation PRIVATE stdc++fs)
-    target_compile_options(appmap-instrumentation PRIVATE -Wno-pmf-conversions -fconcepts)
+    target_compile_options(appmap-instrumentation PRIVATE -Wno-pmf-conversions)
 endif()
