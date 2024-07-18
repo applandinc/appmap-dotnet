@@ -5,22 +5,15 @@ project(appmap-test LANGUAGES CXX)
 option(ENABLE_TEST_COVERAGE "Enable test coverage" OFF)
 
 CPMAddPackage(
-  NAME FakeIt
   GITHUB_REPOSITORY eranpeer/FakeIt
-  GIT_TAG 2.0.5
-  DOWNLOAD_ONLY
+  GIT_TAG 2.4.0
 )
 
-if (FakeIt_ADDED)
-  add_library(FakeIt INTERFACE IMPORTED)
-  target_include_directories(FakeIt INTERFACE "${FakeIt_SOURCE_DIR}/single_header/standalone")
-endif()
-
-target_link_libraries(appmap-instrumentation PRIVATE FakeIt)
+target_link_libraries(appmap-instrumentation PRIVATE FakeIt::FakeIt-doctest)
 
 file(GLOB sources CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 add_executable(appmap-test ${sources})
-target_link_libraries(appmap-test doctest appmap-instrumentation FakeIt)
+target_link_libraries(appmap-test doctest appmap-instrumentation FakeIt::FakeIt-doctest)
 
 set_target_properties(appmap-test PROPERTIES CXX_STANDARD 20)
 

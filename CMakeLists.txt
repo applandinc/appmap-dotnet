@@ -45,7 +45,12 @@ endif()
 CPMAddPackage("gh:gabime/spdlog@1.8.2")
 target_compile_options(spdlog PRIVATE -fPIC)
 
-CPMAddPackage("gh:onqtam/doctest@2.4.5#2.4.5")
+CPMAddPackage(
+  GITHUB_REPOSITORY onqtam/doctest
+  VERSION 2.4.11
+)
+
+target_include_directories(doctest INTERFACE $<BUILD_INTERFACE:${doctest_SOURCE_DIR}/doctest>)
 
 CPMAddPackage(
   NAME yaml-cpp
