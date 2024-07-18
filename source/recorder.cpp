@@ -130,7 +130,8 @@ namespace {
     void capture_argument(T value)
     {
         spdlog::trace("got argument: {}", value);
-        arguments.push_back(value);
+        const cor_value val = value;
+        arguments.push_back(val);
     }
 
     template <>
