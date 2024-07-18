@@ -72,11 +72,11 @@ namespace appmap { namespace web_framework {
             const auto RequestWrapper = instr.define_type(u"AppMap.AspNetCore.RequestWrapper");
             const auto RequestWrapperNext = instr.define_field(RequestWrapper, u"next", sig::field(RequestDelegate));
 
-            const auto RequestWrapperCtor = instr.define_method(RequestWrapper,
+            const auto RequestWrapperCtor [[maybe_unused]] = instr.define_method(RequestWrapper,
                 u".ctor", sig::method(sig::Void, {RequestDelegate}),
                 { ldarg{0}, ldarg{1}, stfld{RequestWrapperNext} });
 
-            const auto RequestWrapperInvoke = instr.define_method(RequestWrapper,
+            const auto RequestWrapperInvoke [[maybe_unused]] = instr.define_method(RequestWrapper,
                 u"Invoke", sig::method(Task, {HttpContext}), {sig::native_int},
                 {
                     ldarg{1}, callvirt{HttpContext_get_Request},
@@ -107,12 +107,14 @@ namespace appmap { namespace web_framework {
             auto code = method.instructions();
             const auto last = code.last_instruction();
 
+#if (false)
             code.insert_before(last, cil::compile({
                 newobj{RequestWrapperCtor},
                 ldftn{RequestWrapperInvoke},
                 newobj{instr.member_reference(RequestDelegate, u".ctor", sig::method(sig::Void, {sig::object, sig::native_int}))}
             }, instr));
             spdlog::trace("request wrappers installed");
+#endif
 
             applied = true;
             return true;

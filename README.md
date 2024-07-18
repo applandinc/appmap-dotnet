@@ -47,11 +47,6 @@ the runs recorded. The appmaps are written to `$APPMAP_OUTPUT_DIR`.
 When using XUnit, test parallelization is disabled; otherwise the test code
 interleaves and the appmap make no sense.
 
-## ASP.NET core integration
-
-AppMap hooks into *Microsoft.AspNetCore.Builder.ApplicationBuilder.Build*
-allowing it to detect and record HTTP requests and responses.
-
 ## Configuration
 
 ### Configuration file
