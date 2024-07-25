@@ -1,5 +1,5 @@
 ---
-  BasedOnStyle: Google
+  BasedOnStyle: WebKit
   AccessModifierOffset: '-2'
   AlignTrailingComments: 'true'
   AllowAllParametersOfDeclarationOnNextLine: 'false'
