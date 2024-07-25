@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, macos-latest ]
+        os: [ ubuntu-24.04, macos-latest ]
 
     runs-on: ${{ matrix.os }}
 
@@ -62,7 +62,7 @@ jobs:
 
   package:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v2
@@ -76,7 +76,7 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: "bin/linux-x64/libInstrumentationEngine.so"
-          key: ${{ github.workflow }}-clrie-ubuntu-latest-${{ hashFiles('scripts/get-clrie.sh') }}
+          key: ${{ github.workflow }}-clrie-ubuntu-24.04-${{ hashFiles('scripts/get-clrie.sh') }}
 
       - uses: actions/cache@v2
         with:
