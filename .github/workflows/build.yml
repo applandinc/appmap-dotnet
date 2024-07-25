@@ -16,26 +16,26 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/nuget-packages
           key: nuget-${{ hashFiles('**/*.csproj') }}
           restore-keys: nuget-
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: "**/cpm_modules"
           key: ${{ github.workflow }}-cpm-modules-${{ hashFiles('**/CMakeLists.txt', '**/*.cmake') }}
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: build/_deps
           key: ${{ github.workflow }}-deps-${{ matrix.os }}-${{ hashFiles('**/CMakeLists.txt', '**/*.cmake') }}
           restore-keys: ${{ github.workflow }}-deps-${{ matrix.os }}-
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: "bin/**/libInstrumentationEngine.*"
           key: ${{ github.workflow }}-clrie-${{ matrix.os }}-${{ hashFiles('scripts/get-clrie.sh') }}
@@ -48,14 +48,14 @@ jobs:
 
       - name: archive so
         if: always() && matrix.os == 'ubuntu-24.04'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: libappmap-instrumentation.so
           path: build/libappmap-instrumentation.so
 
       - name: archive dylib
         if: always() && matrix.os == 'macos-latest'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: libappmap-instrumentation.dylib
           path: build/libappmap-instrumentation.dylib
@@ -65,27 +65,27 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/nuget-packages
           key: nuget-${{ hashFiles('**/*.csproj') }}
           restore-keys: nuget-
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: "bin/linux-x64/libInstrumentationEngine.so"
           key: ${{ github.workflow }}-clrie-ubuntu-24.04-${{ hashFiles('scripts/get-clrie.sh') }}
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: libappmap-instrumentation.so
           path: bin/linux-x64/
 
       - run: ./scripts/package.sh
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: AppLand.AppMap.nupkg
           path: launcher/bin/Release/*.nupkg
