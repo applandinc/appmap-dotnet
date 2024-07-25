@@ -25,11 +25,10 @@ namespace appmap { namespace test_framework {
     }
 
     void endCase() {
-        namespace fs = std::filesystem;
         const config &c = appmap::config::instance();
         auto [stream, path] = c.appmap_output_stream(case_name);
         std::lock_guard lock(appmap::recorder::mutex);
-        *stream << generate(appmap::recorder::events, c.generate_classmap) << std::endl;
+        *stream << generate(appmap::recorder::events) << std::endl;
         spdlog::info("Wrote {}", path.string());
     }
 

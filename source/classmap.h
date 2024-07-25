@@ -1,7 +1,8 @@
 #pragma once
 
-#include <com/ptr.h>
+#include "method_info.h"
 
+#include <com/ptr.h>
 #include <initializer_list>
 #include <memory>
 #include <unordered_map>
@@ -12,7 +13,10 @@ struct IMethodInfo;
 namespace appmap {
     namespace classmap {
         struct code_container;
-        struct function { bool is_static; };
+        struct function {
+            bool is_static;
+            code_location location;
+        };
 
         using code_object = std::variant<code_container, function>;
         using code_object_ptr = std::unique_ptr<code_object>;

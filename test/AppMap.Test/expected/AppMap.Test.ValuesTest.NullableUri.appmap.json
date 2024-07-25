@@ -1,10 +1,56 @@
 {
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "location": "AppMap.Test.dll:4783",
+                      "name": ".ctor",
+                      "static": false,
+                      "type": "function"
+                    },
+                    {
+                      "location": "AppMap.Test.dll:4306",
+                      "name": "get_Uri",
+                      "static": false,
+                      "type": "function"
+                    },
+                    {
+                      "location": "AppMap.Test.dll:9100",
+                      "name": "set_Uri",
+                      "static": false,
+                      "type": "function"
+                    }
+                  ],
+                  "name": "Values",
+                  "type": "class"
+                }
+              ],
+              "name": "Code",
+              "type": "package"
+            }
+          ],
+          "name": "Test",
+          "type": "package"
+        }
+      ],
+      "name": "AppMap",
+      "type": "package"
+    }
+  ],
   "events": [
     {
       "defined_class": "AppMap.Test.Code.Values",
       "event": "call",
       "id": 1,
+      "lineno": 4783,
       "method_id": ".ctor",
+      "path": "AppMap.Test.dll",
       "receiver": {
         "class": "AppMap.Test.Code.Values",
         "value": "AppMap.Test.Code.Values"
@@ -22,7 +68,9 @@
       "defined_class": "AppMap.Test.Code.Values",
       "event": "call",
       "id": 3,
+      "lineno": 4306,
       "method_id": "get_Uri",
+      "path": "AppMap.Test.dll",
       "receiver": {
         "class": "AppMap.Test.Code.Values",
         "value": "AppMap.Test.Code.Values"
@@ -44,6 +92,7 @@
       "defined_class": "AppMap.Test.Code.Values",
       "event": "call",
       "id": 5,
+      "lineno": 9100,
       "method_id": "set_Uri",
       "parameters": [
         {
@@ -52,6 +101,7 @@
           "value": "http://appmap.test/"
         }
       ],
+      "path": "AppMap.Test.dll",
       "receiver": {
         "class": "AppMap.Test.Code.Values",
         "value": "AppMap.Test.Code.Values"
@@ -69,7 +119,9 @@
       "defined_class": "AppMap.Test.Code.Values",
       "event": "call",
       "id": 7,
+      "lineno": 4306,
       "method_id": "get_Uri",
+      "path": "AppMap.Test.dll",
       "receiver": {
         "class": "AppMap.Test.Code.Values",
         "value": "AppMap.Test.Code.Values"

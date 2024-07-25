@@ -74,11 +74,6 @@ Relative `path` entries are resolved in `APPMAP_BASEPATH` or the directory where
 Base path; this is where the search for the config file begins and where relative `path` packages are resolved.
 Defaults to where the config file was found, or the current directory.
 
-#### `APPMAP_CLASSMAP`
-
-If set and truthy, generate a classmap in the appmap files.
-Currently disabled by default because the vscode extension chokes on classmaps without source location information.
-
 #### `APPMAP_CONFIG`
 
 File path. Allows using a specific config file. By default, `appmap.yml` is searched in the current

@@ -1,10 +1,50 @@
 {
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "location": "AppMap.Test.dll:3314",
+                      "name": "Fun1",
+                      "static": true,
+                      "type": "function"
+                    },
+                    {
+                      "location": "AppMap.Test.dll:6578",
+                      "name": "Fun2",
+                      "static": true,
+                      "type": "function"
+                    }
+                  ],
+                  "name": "Threads",
+                  "type": "class"
+                }
+              ],
+              "name": "Code",
+              "type": "package"
+            }
+          ],
+          "name": "Test",
+          "type": "package"
+        }
+      ],
+      "name": "AppMap",
+      "type": "package"
+    }
+  ],
   "events": [
     {
       "defined_class": "AppMap.Test.Code.Threads",
       "event": "call",
       "id": 1,
+      "lineno": 3314,
       "method_id": "Fun1",
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },
@@ -12,7 +52,9 @@
       "defined_class": "AppMap.Test.Code.Threads",
       "event": "call",
       "id": 2,
+      "lineno": 6578,
       "method_id": "Fun2",
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 2
     },

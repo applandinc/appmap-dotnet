@@ -29,7 +29,7 @@ void appmap::instrumentation_method::on_shutdown()
         }
     }
     if (auto f = config.appmap_output_stream()) {
-        *f << appmap::generate(recorder::events, config.generate_classmap) << std::endl;
+        *f << appmap::generate(recorder::events) << std::endl;
     }
 }
 

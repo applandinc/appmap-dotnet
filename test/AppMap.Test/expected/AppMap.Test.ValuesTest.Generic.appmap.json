@@ -1,9 +1,42 @@
 {
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "location": "AppMap.Test.dll:3635",
+                      "name": "Generic<!!0>",
+                      "static": true,
+                      "type": "function"
+                    }
+                  ],
+                  "name": "Values",
+                  "type": "class"
+                }
+              ],
+              "name": "Code",
+              "type": "package"
+            }
+          ],
+          "name": "Test",
+          "type": "package"
+        }
+      ],
+      "name": "AppMap",
+      "type": "package"
+    }
+  ],
   "events": [
     {
       "defined_class": "AppMap.Test.Code.Values",
       "event": "call",
       "id": 1,
+      "lineno": 3635,
       "method_id": "Generic<!!0>",
       "parameters": [
         {
@@ -12,6 +45,7 @@
           "value": "testing"
         }
       ],
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },
@@ -29,6 +63,7 @@
       "defined_class": "AppMap.Test.Code.Values",
       "event": "call",
       "id": 3,
+      "lineno": 3635,
       "method_id": "Generic<!!0>",
       "parameters": [
         {
@@ -37,6 +72,7 @@
           "value": null
         }
       ],
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },
@@ -54,6 +90,7 @@
       "defined_class": "AppMap.Test.Code.Values",
       "event": "call",
       "id": 5,
+      "lineno": 3635,
       "method_id": "Generic<!!0>",
       "parameters": [
         {
@@ -62,6 +99,7 @@
           "value": "00000000-0000-0000-0000-000000000000"
         }
       ],
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },

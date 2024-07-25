@@ -13,8 +13,6 @@ namespace appmap {
         std::filesystem::path base_path = std::filesystem::current_path();
         std::filesystem::path appmap_output_dir() const noexcept;
 
-        bool generate_classmap = false;
-
         static config &instance();
         bool should_instrument(clrie::method_info method);
 

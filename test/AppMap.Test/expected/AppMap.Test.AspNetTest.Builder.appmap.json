@@ -1,18 +1,54 @@
 {
-  "events": [
+  "classMap": [
     {
-      "event": "call",
-      "http_server_request": {
-        "path_info": "/test/here?query=string",
-        "request_method": "POST"
-      },
-      "id": 1,
-      "thread_id": 1
-    },
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "location": "AppMap.Test.dll:6521",
+                      "name": "Invoke",
+                      "static": true,
+                      "type": "function"
+                    }
+                  ],
+                  "name": "AspNetApplication",
+                  "type": "class"
+                },
+                {
+                  "children": [
+                    {
+                      "location": "AppMap.Test.dll:4357",
+                      "name": "MoveNext",
+                      "static": false,
+                      "type": "function"
+                    }
+                  ],
+                  "name": "AspNetApplication+<Invoke>d__0",
+                  "type": "class"
+                }
+              ],
+              "name": "Code",
+              "type": "package"
+            }
+          ],
+          "name": "Test",
+          "type": "package"
+        }
+      ],
+      "name": "AppMap",
+      "type": "package"
+    }
+  ],
+  "events": [
     {
       "defined_class": "AppMap.Test.Code.AspNetApplication",
       "event": "call",
-      "id": 2,
+      "id": 1,
+      "lineno": 6521,
       "method_id": "Invoke",
       "parameters": [
         {
@@ -21,14 +57,17 @@
           "value": "Microsoft.AspNetCore.Http.DefaultHttpContext"
         }
       ],
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },
     {
       "defined_class": "AppMap.Test.Code.AspNetApplication+<Invoke>d__0",
       "event": "call",
-      "id": 3,
+      "id": 2,
+      "lineno": 4357,
       "method_id": "MoveNext",
+      "path": "AppMap.Test.dll",
       "receiver": {
         "class": "AppMap.Test.Code.AspNetApplication+<Invoke>d__0",
         "value": "AppMap.Test.Code.AspNetApplication+<Invoke>d__0"
@@ -38,27 +77,18 @@
     },
     {
       "event": "return",
-      "id": 4,
-      "parent_id": 3,
+      "id": 3,
+      "parent_id": 2,
       "thread_id": 1
     },
     {
       "event": "return",
-      "id": 5,
-      "parent_id": 2,
+      "id": 4,
+      "parent_id": 1,
       "return_value": {
         "class": "System.Threading.Tasks.Task",
         "value": "System.Threading.Tasks.Task`1[System.Threading.Tasks.VoidTaskResult]"
       },
-      "thread_id": 1
-    },
-    {
-      "event": "return",
-      "http_server_response": {
-        "status_code": 442
-      },
-      "id": 6,
-      "parent_id": 1,
       "thread_id": 1
     }
   ],

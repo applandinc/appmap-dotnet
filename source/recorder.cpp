@@ -1,13 +1,15 @@
-#include <doctest/doctest.h>
-#include <spdlog/spdlog.h>
-#include <spdlog/fmt/bundled/ranges.h>
-
 #include "recorder.h"
 
+#include "clrie/method_info.h"
 #include "instrumentation.h"
 #include "method.h"
 #include "method_info.h"
 #include "type.h"
+
+#include <doctest/doctest.h>
+#include <spdlog/fmt/bundled/ranges.h>
+#include <spdlog/spdlog.h>
+#include <unordered_map>
 
 using namespace appmap;
 
@@ -217,7 +219,13 @@ namespace {
 
         return names;
     }
-}
+
+    code_location make_synthetic_location(const clrie::method_info& method) {
+        static std::hash<std::string> hash_fn;
+        const auto path = method.module_info().module_name();
+        return { path, static_cast<int>(hash_fn(method.full_name()) % 10000) };
+    }
+} // namespace
 
 void recorder::instrument(clrie::method_info method)
 {
@@ -276,11 +284,7 @@ void recorder::instrument(clrie::method_info method)
         }
     }
 
-    method_infos.push_back({
-        method.declaring_type().name(),
-        method.name(),
-        is_static,
-        friendly_name(return_type),
-        std::move(parameter_infos)
-    });
+    method_infos.push_back(
+        { method.declaring_type().name(), method.name(), make_synthetic_location(method), is_static,
+            friendly_name(return_type), std::move(parameter_infos) });
 }

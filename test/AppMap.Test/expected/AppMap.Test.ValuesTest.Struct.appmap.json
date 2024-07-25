@@ -1,9 +1,60 @@
 {
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "location": "AppMap.Test.dll:520",
+                      "name": "set_field",
+                      "static": false,
+                      "type": "function"
+                    }
+                  ],
+                  "name": "AStruct",
+                  "type": "class"
+                },
+                {
+                  "children": [
+                    {
+                      "location": "AppMap.Test.dll:4397",
+                      "name": "TakesStruct",
+                      "static": true,
+                      "type": "function"
+                    },
+                    {
+                      "location": "AppMap.Test.dll:9562",
+                      "name": "StructRef",
+                      "static": true,
+                      "type": "function"
+                    }
+                  ],
+                  "name": "Values",
+                  "type": "class"
+                }
+              ],
+              "name": "Code",
+              "type": "package"
+            }
+          ],
+          "name": "Test",
+          "type": "package"
+        }
+      ],
+      "name": "AppMap",
+      "type": "package"
+    }
+  ],
   "events": [
     {
       "defined_class": "AppMap.Test.Code.AStruct",
       "event": "call",
       "id": 1,
+      "lineno": 520,
       "method_id": "set_field",
       "parameters": [
         {
@@ -12,6 +63,7 @@
           "value": 5
         }
       ],
+      "path": "AppMap.Test.dll",
       "receiver": {
         "class": "AppMap.Test.Code.AStruct",
         "value": "AppMap.Test.Code.AStruct"
@@ -29,6 +81,7 @@
       "defined_class": "AppMap.Test.Code.Values",
       "event": "call",
       "id": 3,
+      "lineno": 4397,
       "method_id": "TakesStruct",
       "parameters": [
         {
@@ -37,6 +90,7 @@
           "value": "AppMap.Test.Code.AStruct"
         }
       ],
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },
@@ -50,6 +104,7 @@
       "defined_class": "AppMap.Test.Code.Values",
       "event": "call",
       "id": 5,
+      "lineno": 9562,
       "method_id": "StructRef",
       "parameters": [
         {
@@ -58,6 +113,7 @@
           "value": "AppMap.Test.Code.AStruct"
         }
       ],
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },
@@ -71,6 +127,7 @@
       "defined_class": "AppMap.Test.Code.AStruct",
       "event": "call",
       "id": 7,
+      "lineno": 520,
       "method_id": "set_field",
       "parameters": [
         {
@@ -79,6 +136,7 @@
           "value": 3
         }
       ],
+      "path": "AppMap.Test.dll",
       "receiver": {
         "class": "AppMap.Test.Code.AStruct",
         "value": "AppMap.Test.Code.AStruct"

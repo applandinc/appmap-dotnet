@@ -1,9 +1,42 @@
 {
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "location": "AppMap.Test.dll:8251",
+                      "name": "NullableGuid",
+                      "static": true,
+                      "type": "function"
+                    }
+                  ],
+                  "name": "Values",
+                  "type": "class"
+                }
+              ],
+              "name": "Code",
+              "type": "package"
+            }
+          ],
+          "name": "Test",
+          "type": "package"
+        }
+      ],
+      "name": "AppMap",
+      "type": "package"
+    }
+  ],
   "events": [
     {
       "defined_class": "AppMap.Test.Code.Values",
       "event": "call",
       "id": 1,
+      "lineno": 8251,
       "method_id": "NullableGuid",
       "parameters": [
         {
@@ -12,6 +45,7 @@
           "value": true
         }
       ],
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },
@@ -29,6 +63,7 @@
       "defined_class": "AppMap.Test.Code.Values",
       "event": "call",
       "id": 3,
+      "lineno": 8251,
       "method_id": "NullableGuid",
       "parameters": [
         {
@@ -37,6 +72,7 @@
           "value": false
         }
       ],
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },

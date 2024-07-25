@@ -38,7 +38,7 @@ namespace {
         }
     }
 
-    bool get_bool_envar(const char *name) {
+    [[maybe_unused]] bool get_bool_envar(const char* name) {
         const auto result = std::getenv(name);
         if (result == nullptr)
             return false;
@@ -190,7 +190,6 @@ namespace {
         config c;
         c.module_list_path = get_envar("APPMAP_LIST_MODULES");
         c.appmap_output_path = get_envar("APPMAP_OUTPUT_PATH");
-        c.generate_classmap = get_bool_envar("APPMAP_CLASSMAP");
         const auto basepath = get_envar("APPMAP_BASEPATH");
         if (basepath)
             c.base_path = *basepath;

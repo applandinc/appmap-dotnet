@@ -1,9 +1,42 @@
 {
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "location": "AppMap.Test.dll:8891",
+                      "name": "ByRef",
+                      "static": true,
+                      "type": "function"
+                    }
+                  ],
+                  "name": "Values",
+                  "type": "class"
+                }
+              ],
+              "name": "Code",
+              "type": "package"
+            }
+          ],
+          "name": "Test",
+          "type": "package"
+        }
+      ],
+      "name": "AppMap",
+      "type": "package"
+    }
+  ],
   "events": [
     {
       "defined_class": "AppMap.Test.Code.Values",
       "event": "call",
       "id": 1,
+      "lineno": 8891,
       "method_id": "ByRef",
       "parameters": [
         {
@@ -17,6 +50,7 @@
           "value": true
         }
       ],
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },
@@ -30,6 +64,7 @@
       "defined_class": "AppMap.Test.Code.Values",
       "event": "call",
       "id": 3,
+      "lineno": 8891,
       "method_id": "ByRef",
       "parameters": [
         {
@@ -43,6 +78,7 @@
           "value": false
         }
       ],
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },

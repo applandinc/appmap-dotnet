@@ -1,9 +1,48 @@
 {
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "location": "AppMap.Test.dll:4753",
+                      "name": "Write",
+                      "static": true,
+                      "type": "function"
+                    },
+                    {
+                      "location": "AppMap.Test.dll:7988",
+                      "name": ".cctor",
+                      "static": true,
+                      "type": "function"
+                    }
+                  ],
+                  "name": "DisablableConsole",
+                  "type": "class"
+                }
+              ],
+              "name": "Code",
+              "type": "package"
+            }
+          ],
+          "name": "Test",
+          "type": "package"
+        }
+      ],
+      "name": "AppMap",
+      "type": "package"
+    }
+  ],
   "events": [
     {
       "defined_class": "AppMap.Test.Code.DisablableConsole",
       "event": "call",
       "id": 1,
+      "lineno": 4753,
       "method_id": "Write",
       "parameters": [
         {
@@ -12,6 +51,7 @@
           "value": null
         }
       ],
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },
@@ -25,6 +65,7 @@
       "defined_class": "AppMap.Test.Code.DisablableConsole",
       "event": "call",
       "id": 3,
+      "lineno": 4753,
       "method_id": "Write",
       "parameters": [
         {
@@ -33,6 +74,7 @@
           "value": "System.Object"
         }
       ],
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },
@@ -40,7 +82,9 @@
       "defined_class": "AppMap.Test.Code.DisablableConsole",
       "event": "call",
       "id": 4,
+      "lineno": 7988,
       "method_id": ".cctor",
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },
@@ -60,6 +104,7 @@
       "defined_class": "AppMap.Test.Code.DisablableConsole",
       "event": "call",
       "id": 7,
+      "lineno": 4753,
       "method_id": "Write",
       "parameters": [
         {
@@ -68,6 +113,7 @@
           "value": "something else"
         }
       ],
+      "path": "AppMap.Test.dll",
       "static": true,
       "thread_id": 1
     },

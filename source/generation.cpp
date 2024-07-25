@@ -1,15 +1,14 @@
-#include <doctest/doctest.h>
-#include <nlohmann/json.hpp>
-#include <spdlog/spdlog.h>
-#include <spdlog/fmt/bundled/ranges.h>
-
-#include <algorithm>
-#include <unordered_set>
-#include <sstream>
+#include "generation.h"
 
 #include "classmap.h"
-#include "generation.h"
 #include "method_info.h"
+
+#include <doctest/doctest.h>
+#include <nlohmann/json.hpp>
+#include <spdlog/fmt/bundled/ranges.h>
+#include <spdlog/spdlog.h>
+#include <sstream>
+#include <unordered_set>
 
 using namespace appmap;
 using namespace nlohmann;
@@ -50,7 +49,9 @@ namespace {
             }
 
             code->kind = classmap::code_container::klass;
-            code->try_emplace(method.method_id, std::make_unique<classmap::code_object>(classmap::function{method.is_static}));
+            code->try_emplace(method.method_id,
+                std::make_unique<classmap::code_object>(
+                    classmap::function { method.is_static, method.location }));
         }
 
         return map;
@@ -65,6 +66,8 @@ namespace appmap {
         j["defined_class"] = m.defined_class;
         j["method_id"] = m.method_id;
         j["static"] = m.is_static;
+        j["path"] = m.location.file_name;
+        j["lineno"] = m.location.line_number;
     }
 
     void to_json(json &j, const parameter_info &p) {
@@ -195,6 +198,8 @@ namespace appmap {
                 using t = std::decay_t<decltype(arg)>;
                 if constexpr (std::is_same_v<t, function>) {
                     j["static"] = arg.is_static;
+                    j["location"]
+                        = fmt::format("{}:{}", arg.location.file_name, arg.location.line_number);
                 } else {
                     j["children"] = arg;
                 }
@@ -217,11 +222,9 @@ namespace appmap {
     }
 }
 
-std::string appmap::generate(const appmap::recording &events, bool generate_classmap, const metadata &metadata)
-{
+std::string appmap::generate(const appmap::recording& events, const metadata& metadata) {
     json result = { { "version", APPMAP_VERSION }, { "events", events } };
-    if (generate_classmap)
-        result["classMap"] = classmap_of_recording(events);
+    result["classMap"] = classmap_of_recording(events);
 
     json md = metadata;
     if (!md.empty())
@@ -247,10 +250,10 @@ TEST_CASE("basic generation") {
     events.push_back(std::make_unique<return_event>(42, static_cast<function_call_event *>(events[1].get()), uint64_t{42}));
     events.push_back(std::make_unique<return_event>(42, static_cast<function_call_event *>(events[0].get()), int64_t{-31337}));
 
-    method_infos.push_back({ "Some.Class", "Method", false, "I8" });
-    method_infos.push_back({ "Some.Class", "OtherMethod", true, "U4" });
+    method_infos.push_back({ "Some.Class", "Method", { "SomeClass.cs", 42 }, false, "I8" });
+    method_infos.push_back({ "Some.Class", "OtherMethod", { "SomeClass.cs", 43 }, true, "U4" });
 
-    CHECK(json::parse(generate(events, true)) == R"(
+    CHECK(json::parse(generate(events)) == R"(
         {
             "version": "1.6.0",
             "metadata": { "test": "metadata" },
@@ -319,7 +322,7 @@ TEST_CASE("http events generation") {
     appmap::recording events;
     events.push_back(std::make_unique<http_request_event>(42, "POST", "/test"));
     events.push_back(std::make_unique<http_response_event>(42, static_cast<call_event *>(events[0].get()), 409));
-    CHECK(json::parse(generate(events, false)) == R"({
+    CHECK(json::parse(generate(events)) == R"({
         "version": "1.6.0",
         "metadata": { "test": "metadata" },
         "events": [
