@@ -161,8 +161,13 @@ namespace appmap {
 
         void operator()(const return_event &ev) {
             json jev(ev);
-            jev["parent_id"] = calls.at(ev.call);
-            calls.erase(ev.call);
+            if (calls.contains(ev.call)) {
+                jev["parent_id"] = calls.at(ev.call);
+                calls.erase(ev.call);
+            } else {
+                spdlog::warn("no call event for return event");
+                jev["parent_id"] = 0;
+            }
             push(std::move(jev));
         }
 
