@@ -13,7 +13,6 @@ namespace AppLand.AppMap
         {
             return RuntimeInformation.ProcessArchitecture == Architecture.X64 && (
                 RuntimeInformation.IsOSPlatform(OSPlatform.Linux)
-                || RuntimeInformation.IsOSPlatform(OSPlatform.OSX)
             );
         }
 
@@ -166,7 +165,7 @@ namespace AppLand.AppMap
         static int Main(string[] args)
         {
             if (!PlatformSupported()) {
-                Console.WriteLine($"AppMap for .NET is currently only supported on linux-x64 and osx-x64.");
+                Console.WriteLine($"AppMap for .NET is currently only supported on linux-x64.");
                 Console.WriteLine($"Platform {RuntimeInformation.RuntimeIdentifier} not supported yet.");
                 Console.WriteLine($"Please go to https://github.com/applandinc/appmap-dotnet to tell us about platform support you're interested in.");
                 return 127;

@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-24.04, macos-13 ]
+        os: [ ubuntu-24.04 ]
 
     runs-on: ${{ matrix.os }}
 
@@ -47,7 +47,7 @@ jobs:
         run: ./scripts/test.sh
 
       - name: archive so
-        if: always() && matrix.os == 'ubuntu-latest'
+        if: always() && matrix.os == 'ubuntu-24.04'
         uses: actions/upload-artifact@v2
         with:
           name: libappmap-instrumentation.so
@@ -78,20 +78,10 @@ jobs:
           path: "bin/linux-x64/libInstrumentationEngine.so"
           key: ${{ github.workflow }}-clrie-ubuntu-24.04-${{ hashFiles('scripts/get-clrie.sh') }}
 
-      - uses: actions/cache@v2
-        with:
-          path: "bin/osx-x64/libInstrumentationEngine.dylib"
-          key: ${{ github.workflow }}-clrie-macos-latest-${{ hashFiles('scripts/get-clrie.sh') }}
-
       - uses: actions/download-artifact@v2
         with:
           name: libappmap-instrumentation.so
           path: bin/linux-x64/
-
-      - uses: actions/download-artifact@v2
-        with:
-          name: libappmap-instrumentation.dylib
-          path: bin/osx-x64/
 
       - run: ./scripts/package.sh
 

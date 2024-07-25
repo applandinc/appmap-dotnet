@@ -2,7 +2,6 @@
 
 cd "$( dirname "${BASH_SOURCE[0]}" )"/..
 
-scripts/get-clrie.sh Darwin
 scripts/get-clrie.sh Linux
 
 chmod +x bin/*/*
