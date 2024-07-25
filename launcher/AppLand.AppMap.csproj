@@ -8,15 +8,15 @@
 
     <Title>AppMap for .NET</Title>
     <PackageId>AppLand.AppMap</PackageId>
-    <Version>0.0.4</Version>
+    <Version>0.0.5</Version>
     <Authors>Rafał Rzepecki</Authors>
     <Company>AppLand Inc.</Company>
-    <Copyright>Copyright (c) 2021 AppLand Inc.; portions copyright by Microsoft</Copyright>
+    <Copyright>Copyright (c) 2021–2024 AppLand Inc.; portions copyright by Microsoft</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>Record the operation of a .NET program, using the AppLand 'AppMap' format.</Description>
     <PackageTags>AppMap;instrumentation</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageReadme>README.md</PackageReadme>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/applandinc/appmap-dotnet</PackageProjectUrl>
     <RepositoryUrl>https://github.com/applandinc/appmap-dotnet.git</RepositoryUrl>
   </PropertyGroup>
@@ -27,5 +27,6 @@
     <Content Include="../config/ProductionBreakpoints_x64.linux.config" PackagePath="runtimes/linux-x64/native/ProductionBreakpoints_x64.config" />
     <Content Include="icon.png" PackagePath="/" />
     <Content Include="../README.md" PackagePath="/" />
+    <Content Include="../LICENSE" PackagePath="/" />
   </ItemGroup>
 </Project>
